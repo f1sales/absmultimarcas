@@ -17,7 +17,27 @@ module Absmultimarcas
   end
   class F1SalesCustom::Email::Parser
     def parse
-      # ...
+      parsed_email = @email.body.colons_to_hash
+      source = F1SalesCustom::Email::Source.all[0]
+      product = "#{parsed_email['marca'].capitalize} #{parsed_email['modelo'].capitalize}"
+      description = "Versão: #{parsed_email['versao']} - Ano: #{parsed_email['ano']} - Valor: #{parsed_email['preco']}"
+
+      {
+        source: {
+          name: source[:name]
+        },
+        customer: {
+          name: parsed_email['nome_completo'],
+          phone: parsed_email['celular'].tr('^0-9', ''),
+          email: parsed_email['email']
+        },
+        observation: {
+          text: parsed_email['melhor_forma_de_iniciar_a_negociacao'].gsub('_', ' ')
+        },
+        product: product,
+        message: parsed_email['mensagem'],
+        description: description
+      }
     end
   end
 end
