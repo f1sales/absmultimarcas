@@ -32,16 +32,12 @@ RSpec.describe F1SalesCustom::Email::Parser do
       expect(parsed_email[:customer][:email]).to eq('Absmultimarcassjc@gmail.com')
     end
 
-    it 'contains observation' do
-      expect(parsed_email[:observation][:text]).to eq('Trocar meu veículo por um novo e ainda receber um valor em dinheiro')
-    end
-
     it 'contains product' do
       expect(parsed_email[:product]).to eq('Renault Logan')
     end
 
     it 'contains message' do
-      expect(parsed_email[:message]).to eq('Agora vai funcionar direitinho...')
+      expect(parsed_email[:message]).to eq('Trocar meu veículo por um novo e ainda receber um valor em dinheiro - Agora vai funcionar direitinho...')
     end
 
     it 'contains description' do
