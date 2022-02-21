@@ -32,7 +32,7 @@ module Absmultimarcas
           phone: parsed_email['tel'].split[0..2].join.tr('^0-9', ''),
           email: parsed_email['email']
         },
-        product: parsed_email['veculo'],
+        product: {name: parsed_email['veculo'] },
         message: message,
         description: description
       }
