@@ -21,8 +21,6 @@ module Absmultimarcas
       source = F1SalesCustom::Email::Source.all[0]
       description = "Ano: #{parsed_email['ano']} - Final da Placa: #{parsed_email['final_da_placa']} - Valor: R$ #{parsed_email['preco']}"
 
-      #message = @email.body.split('ABS MULTIMARCAS,').last.split('Nome:').first.strip
-
       {
         source: {
           name: source[:name]
