@@ -2,12 +2,12 @@ require 'ostruct'
 require 'byebug'
 
 RSpec.describe F1SalesCustom::Email::Parser do
-  context 'when came from the website' do
+  context 'when came from the website after update' do
     let(:email) do
       email = OpenStruct.new
       email.to = [email: 'website@absmultimarcas.f1sales.net']
-      email.subject = 'Proposta para o carro usado AUDI A3 1.8 20V 150CV TURBO GASOLINA 4P AUTOMÁTICO 2002'
-      email.body = "WebMotors :: Lead de veículo usado   \n  \n   \n   \n   (http://www.webmotors.com.br/?utm_source=WebMotors&utm_medium=Email_Transacional&utm_campaign=Proposta/Carro/Usado-PJ-142)    \n  \n \n  Proposta para seu Carro \n  \n \n  Responda seus leads pela Plataforma do Revendedor! \nPara garantir um melhor controle de todas as negociações e manter o histórico de cada venda, a partir de 01/02 este e-mail deixará de trazer o conteúdo das propostas recebidas, levando diretamente para responder na Plataforma do Revendedor. \n Clique aqui e responda este lead agora mesmo. (http://webmotors.vmotors.com.br/gestao-leads/central-de-mensagens) \n  \n\n ABS MULTIMARCAS, \n  \nOlá, fiz uma simulação de financiamento para este veículo e estou interessado nele. Por favor entre em contato. Tenho interesse em realizar a negociação através do Car Delivery. \n  Nome: \n                                    Peter \nE-mail:\n                                        peterjoao.pj@gmail.com \nTel.: (\n                                            12)\n                                                99722-0737 \n \n  \n  \n \n  DADOS DO VEÍCULO ANUNCIADO \n  \n \n  \n   \n  Veículo: \n                                                AUDI A3 1.8 20V 150CV TURBO GASOLINA 4P AUTOMÁTICO \nAno:\n                                                    2002 /\n                                                        2002 \nCor:\n                                                            Prata \n Placa:\n                                                                FAF6767 \n Preço: R$\n                                                                    25900.00 \n  \n   \n   Veja o anúncio >> (http://www.webmotors.com.br/c/39071136?utm_source=WebMotors&utm_medium=Email_Transacional&utm_campaign=Proposta/Carro/Usado-PJ-142) \n \n  \n Lembre-se de apagar a placa informada ao lado, caso não queira divulgá-la ao interessado. \nConfira também nossas dicas para uma venda segura! (http://dicas.webmotors.com.br/dicas-de-venda/venda-segura?utm_source=WebMotors&utm_medium=Email_Transacional&utm_campaign=Proposta/Carro/Usado-148) \n  \n  \n  \n \n Veículos anunciados em sites do Grupo WebMotors podem aparecer em mais de um classificado \n   \n   (http://www.webmotors.com.br/?utm_source=WebMotors&utm_medium=Email_Transacional&utm_campaign=Proposta-Financiamento-wm)    (http://www.meucarango.com.br/?utm_source=WebMotors&utm_medium=Email_Transacional&utm_campaign=Proposta-Financiamento-wm)    (http://www.compreauto.com.br/?utm_source=WebMotors&utm_medium=Email_Transacional&utm_campaign=Proposta-Financiamento-wm)  \n  \n   \n  Acompanhe o WebMotors \n         \n    \n  Fale Conosco \n    Dúvidas e perguntas (http://atendimento.webmotors.com.br/perguntas-frequentes?utm_source=WebMotors&utm_medium=Email_Servicos&utm_campaign=agenda/carro/seguro) \nfrequentes \n  \n  \n \n  Essa mensagem foi enviada em 09/12/2021 | 22:01 \nCadastre o domínio @webmotors.com.br como remente confiável. \nWebMotors S.A. Todos os direitos reservados"
+      email.subject = 'Formulário de Proposta de Veículo | ABS MULTIMARCAS | https://www.absmultimarcas.com.br'
+      email.body = "Formulário de Proposta de Veículo \n Nome Completo: Michelangelo Splinter \n Email: michelangelo.davi@gmail.com \n Telefone: (11) 0000-0000 \n Celular: (13) 9666-53551 \n Tipo de Contato: E-mail \n Mensagem: Teste pelo Website. HR-V  - 12:31 \n Marca: HONDA \n Modelo: HR-V \n Ano: 2016/2016 \n Versao: 1.8 16V FLEX EX 4P AUTOMÁTICO \n Preco: 96.900,00 \n Cambio: CVT \n Portas: 4 \n Combustivel: Gasolina e álcool \n Km: 90.000 \n Final da Placa: 1 \n Opcionais: Ar condicionado, Travas elétricas, Vidros elétricos, Alarme, Freio ABS, Air bag do motorista, Rodas de liga leve, Desembaçador traseiro, Air bag duplo, Limpador traseiro, Retrovisores elétricos, Volante com Regulagem de Altura, Controle automático de velocidade, Farol de neblina, Direção Elétrica, Comando de áudio e telefone no volante, Controle de estabilidade, Distribuição eletrônica de frenagem, MP3 Player, Pára-choques na cor do veículo \n Observacoes Adicionais: Com mais de 150 veículos em estoque, a ABS MULTIMARCAS tem opções para todos os gostos. Está procurando um HONDA HR-V?\nNossa equipe está pronta para auxiliar você em todas as etapas do processo.\n\nEntre em contato também pelo WhatsApp (12) 99189-7444. \n Loja: ABS MULTIMARCAS \n Url do Site: https://www.absmultimarcas.com.br \n Url do Formulário: https://www.absmultimarcas.com.br/estoque/veiculo/31837112/honda_hr-v_1.8-16v-flex-ex-4p-automatico"
 
       email
     end
@@ -19,27 +19,27 @@ RSpec.describe F1SalesCustom::Email::Parser do
     end
 
     it 'contains name' do
-      expect(parsed_email[:customer][:name]).to eq('Peter')
+      expect(parsed_email[:customer][:name]).to eq('Michelangelo Splinter')
     end
 
     it 'contains phone' do
-      expect(parsed_email[:customer][:phone]).to eq('12997220737')
+      expect(parsed_email[:customer][:phone]).to eq('13966653551')
     end
 
     it 'contains email' do
-      expect(parsed_email[:customer][:email]).to eq('peterjoao.pj@gmail.com')
+      expect(parsed_email[:customer][:email]).to eq('michelangelo.davi@gmail.com')
     end
 
     it 'contains product' do
-      expect(parsed_email[:product]).to eq('AUDI A3 1.8 20V 150CV TURBO GASOLINA 4P AUTOMÁTICO')
+      expect(parsed_email[:product][:name]).to eq('HONDA HR-V 1.8 16V FLEX EX 4P AUTOMÁTICO')
     end
 
     it 'contains message' do
-      expect(parsed_email[:message]).to eq('Olá, fiz uma simulação de financiamento para este veículo e estou interessado nele. Por favor entre em contato. Tenho interesse em realizar a negociação através do Car Delivery.')
+      expect(parsed_email[:message]).to eq('Teste pelo Website. HR-V  - 12:31')
     end
 
     it 'contains description' do
-      expect(parsed_email[:description]).to eq('Ano: 2002/2002 - Cor: Prata - Placa: FAF6767 - Valor: R$ 25900.00')
+      expect(parsed_email[:description]).to eq('Ano: 2016/2016 - Final da Placa: 1 - Valor: R$ 96.900,00')
     end
   end
 end
