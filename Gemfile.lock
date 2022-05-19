@@ -22,7 +22,7 @@ GIT
 PATH
   remote: .
   specs:
-    absmultimarcas (0.1.1)
+    absmultimarcas (0.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -46,6 +46,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   absmultimarcas!
@@ -57,4 +58,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   2.2.19
+   2.3.10
